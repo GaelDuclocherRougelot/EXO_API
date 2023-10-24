@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>About the univers</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="icon" href="./assets/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="bg-zinc-900">
+    <header class="w-screen h-24 border-y-2 flex gap-10 items-center px-8 bg-zinc-900">
+      <img class="max-w-[300px] mb-6" src="./assets/logotype.png" alt="spaceX logo" />
+      <nav>
+        <ul class="flex items-center gap-8 text-white text-lg font-bold">
+          <li><a href="/">ACCUEIL</a></li>
+          <li><a href="#">PROCHAINE MISSION</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="w-screen h-full flex flex-col gap-17 bg-zinc-900">
+      <aside
+        class="fixed flex flex-col gap-10 items-center py-10 px-2 w-40 h-screen top-24 left-0 bg-zinc-900 border-r-2 text-white font-bold"
+      >
+        <div class="text-center flex flex-col gap-2">
+          <i class="fa-solid fa-globe fa-4x" style="color: #ffffff"></i>
+          <h2>PLANÈTES</h2>
+        </div>
+        <div class="text-center flex flex-col gap-4">
+          <i
+            class="fa-solid fa-shuttle-space fa-rotate-270 fa-4x"
+            style="color: #ffffff"
+          ></i>
+          <h2>VÉHICULES</h2>
+        </div>
+        <div class="text-center flex flex-col gap-2">
+          <i class="fa-brands fa-reddit-alien fa-4x" style="color: #ffffff"></i>
+          <h2>PERSONNES</h2>
+        </div>
+      </aside>
+      <section class="w-full h-full bg-zinc-900 p-10 pl-48">
+        <div
+          class="hero w-full h-full flex flex-col items-start gap-2 object-cover p-8 bg-no-repeat bg-center border-2"
+        >
+          <h1 class="text-cyan-500 text-2xl font-bold">ABOUT THE UNIVERS</h1>
+          <p class="text-white text-lg">
+            Bienvenue sur <span class="text-cyan-500">ABOUT THE UNIVERS</span> pour
+            découvrir toutes nos découvertes à props du monde qui nous entoure !
+          </p>
+          <button class="p-4 bg-zinc-900 border-2 text-white mt-8">DÉCOUVRIR</button>
+        </div>
+      </section>
+      <section class="w-full h-full bg-zinc-900 p-10 pl-48">
+        <div
+          class="hero2 w-full h-full flex flex-col items-start gap-2 object-cover p-8 bg-no-repeat bg-top border-2"
+        >
+          <h1 class="text-cyan-500 text-2xl font-bold">LES CHIFFRES</h1>
+          <p class="text-white text-lg">
+            Nous nous efforcons à archiver toutes nos trouvailles pour vous les partager
+            autant que possible !
+          </p>
+          <div class="stats_container flex gap-24 flex-wrap mt-8">
+            <div class="group flex gap-10">
+              <div class="stat__container flex text-lg gap-4">
+                <i class="fa-solid fa-people-group fa-3x" style="color: #ffffff"></i>
+                <div>
+                  <p class="text-cyan-500 bold">Nombre d'êtres vivants recensés</p>
+                  <p class="persons text-white italic">---</p>
+                </div>
+              </div>
+            </div>
+            <div class="group flex gap-10">
+              <div class="stat__container flex text-lg gap-4">
+                <i
+                class="fa-solid fa-shuttle-space fa-3x"
+                style="color: #ffffff"
+              ></i>
+                <div>
+                  <p class="text-cyan-500 bold">Nombre de véhicules recensés</p>
+                  <p class="vehicles text-white italic">---</p>
+                </div>
+              </div>
+            </div>
+            <div class="group flex gap-10">
+              <div class="stat__container flex text-lg gap-4">
+                <i class="fa-solid fa-globe fa-3x" style="color: #ffffff"></i>
+                <div>
+                  <p class="text-cyan-500 bold">Nombre de planètes recensés</p>
+                  <p class="planets text-white italic">---</p>
+                </div>
+              </div>
+            </div>
+            <div class="group flex gap-10">
+              <div class="stat__container flex text-lg gap-4">
+                <i class="fa-solid fa-clock fa-3x" style="color: #ffffff"></i>
+                <div>
+                  <p class="text-cyan-500 bold">Prochaine mission</p>
+                  <p class="timeToNext text-white italic">---</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="p-4 bg-zinc-900 border-2 text-white mt-8 self-end">PARTICIPER À LA PROCHAINE MISSION</button>
+        </div>
+      </section>
+    </main>
+    <script src="index.js"></script>
+    <style>
+      html {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto", sans-serif;
+      }
+
+      .hero {
+        background-image: url("https://images.unsplash.com/photo-1610296669228-602fa827fc1f?auto=format&fit=crop&q=80&w=1975&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+      }
+
+      .hero2 {
+        background-image: url("https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&q=80&w=2050&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+      }
+    </style>
+  </body>
+</html>
