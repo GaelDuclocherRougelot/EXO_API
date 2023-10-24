@@ -1,6 +1,6 @@
 const persons = document.querySelector(".persons");
 const vehiclesElement = document.querySelector(".vehicles");
-const timeToNext = document.querySelector(".timeToNext");
+const timeToNextMission = document.querySelector(".timeToNext");
 const planetElement = document.querySelector(".planets");
 
 async function getHomeData(type) {
@@ -17,12 +17,11 @@ async function setHomeData() {
   const peoples = await getHomeData("people");
   const vehicles = await getHomeData("vehicles");
   const planets = await getHomeData("planets");
-  const timeToNextMission = await getHomeData("planets");
 
   persons.textContent = peoples.count;
   vehiclesElement.textContent = vehicles.count;
   planetElement.textContent = planets.count;
-  timeToNext.textContent = new Date().toLocaleDateString("fr");
+  timeToNextMission.textContent = new Date().toLocaleDateString("fr");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
