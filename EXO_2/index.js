@@ -1,44 +1,30 @@
-const persons = document.querySelector('.persons');
-const vehiclesElement = document.querySelector('.vehicles');
-const timeToNext = document.querySelector('.timeToNext');
-const planetElement = document.querySelector('.planets');
+const persons = document.querySelector(".persons");
+const vehiclesElement = document.querySelector(".vehicles");
+const timeToNext = document.querySelector(".timeToNext");
+const planetElement = document.querySelector(".planets");
 
-async function getAllPeoples() {
+async function getHomeData(type) {
   try {
-    const peopleResponse = await fetch("https://swapi.dev/api/people/")
-    const people = await peopleResponse.json();
-    return people;
+    const response = await fetch(`https://swapi.dev/api/${type}/`);
+    const data = await response.json();
+    return data;
   } catch (error) {
     throw new error(error);
   }
 }
 
-async function getAllVehicles() {
-  const vehiclesResponse = await fetch("https://swapi.dev/api/vehicles/")
-  const vehicles = await vehiclesResponse.json();
-  return vehicles;
-}
-
-async function getAllPlanets() {
-  const planetsResponse = await fetch("https://swapi.dev/api/planets/")
-  const planets = await planetsResponse.json();
-  return planets;
-}
-
-async function getUpcomingMisson() {
-  const 
-}
-
 async function setHomeData() {
-  const peoples = await getAllPeoples();
-  const vehicles = await getAllVehicles();
-  const planets = await getAllPlanets();
+  const peoples = await getHomeData("people");
+  const vehicles = await getHomeData("vehicles");
+  const planets = await getHomeData("planets");
+  const timeToNextMission = await getHomeData("planets");
 
   persons.textContent = peoples.count;
   vehiclesElement.textContent = vehicles.count;
   planetElement.textContent = planets.count;
+  timeToNext.textContent = new Date().toLocaleDateString("fr");
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   setHomeData();
-})
+});
