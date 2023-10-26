@@ -19,6 +19,52 @@ const prevPageBtn = document.querySelector("#back-page");
 async function init() {
   const planets = await getPlanetsData();
   createListItems(planets);
+
+  searchBar.addEventListener("input", (e) => {
+    const keyword = e.target.value;
+    const listItemNode = [...ul.childNodes];
+    const convertToArr = Array.from(listItemNode);
+
+    convertToArr.map((listItem) => {
+      const planetItemName = listItem.firstChild.textContent;
+
+      if (!planetItemName.includes(keyword)) {
+        listItem.classList.add("hidden");
+      } else {
+        listItem.classList.remove("hidden");
+      }
+    });
+  });
+
+  select.addEventListener("change", (e) => {
+    const selectChoice = e.target.value;
+    const listItemNode = [...ul.childNodes];
+    const convertToArr = Array.from(listItemNode);
+
+    convertToArr.forEach((listItem) => {
+      const planetPopulation = listItem.value;
+      switch (selectChoice) {
+        case "1":
+          planetPopulation >= 0 && planetPopulation <= 100000
+            ? listItem.classList.remove("hidden")
+            : listItem.classList.add("hidden");
+          break;
+        case "2":
+          planetPopulation >= 100000 && planetPopulation <= 100000000
+            ? listItem.classList.remove("hidden")
+            : listItem.classList.add("hidden");
+          break;
+        case "3":
+          planetPopulation > 100000000
+            ? listItem.classList.remove("hidden")
+            : listItem.classList.add("hidden");
+          break;
+        default:
+          listItem.classList.remove("hidden");
+          break;
+      }
+    });
+  });
 }
 
 nextPageBtn.addEventListener("click", async () => {
@@ -141,51 +187,5 @@ function addPlanetDetails(planet, item) {
   gravityEl.textContent = planet.gravity;
   terrainEl.textContent = planet.terrain;
 }
-
-searchBar.addEventListener("input", (e) => {
-  const keyword = e.target.value;
-  const listItemNode = [...ul.childNodes];
-  const convertToArr = Array.from(listItemNode);
-
-  convertToArr.map((listItem) => {
-    const planetItemName = listItem.firstChild.textContent;
-
-    if (!planetItemName.includes(keyword)) {
-      listItem.classList.add("hidden");
-    } else {
-      listItem.classList.remove("hidden");
-    }
-  });
-});
-
-select.addEventListener("change", (e) => {
-  const selectChoice = e.target.value;
-  const listItemNode = [...ul.childNodes];
-  const convertToArr = Array.from(listItemNode);
-
-  convertToArr.forEach((listItem) => {
-    const planetPopulation = listItem.value;
-    switch (selectChoice) {
-      case "1":
-        planetPopulation >= 0 && planetPopulation <= 100000
-          ? listItem.classList.remove("hidden")
-          : listItem.classList.add("hidden");
-        break;
-      case "2":
-        planetPopulation >= 100000 && planetPopulation <= 100000000
-          ? listItem.classList.remove("hidden")
-          : listItem.classList.add("hidden");
-        break;
-      case "3":
-        planetPopulation > 100000000
-          ? listItem.classList.remove("hidden")
-          : listItem.classList.add("hidden");
-        break;
-      default:
-        listItem.classList.remove("hidden");
-        break;
-    }
-  });
-});
 
 document.addEventListener("DOMContentLoaded", init);
