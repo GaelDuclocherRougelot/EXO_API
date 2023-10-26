@@ -49,7 +49,7 @@ async function getPlanetsData(type = "planets", page = 1) {
   planetDetailsWrapper.classList.add("hidden");
   ul.classList.add("hidden");
   changeStateOfPagination(page);
-  
+
   try {
     const response = await fetch(`https://swapi.dev/api/${type}/?page=${page}`);
     response.ok ? ul.classList.remove("hidden") : null;
@@ -66,7 +66,8 @@ async function getPlanetsData(type = "planets", page = 1) {
 
 function changeStateOfPagination(page) {
   currentPageEl.textContent = page;
-
+  select.value = "";
+  searchBar.value = "";
   if (page <= 1) {
     prevPageBtn.classList.remove("bg-cyan-500");
     prevPageBtn.classList.add("bg-gray-300", "cursor-default");
@@ -82,43 +83,55 @@ function changeStateOfPagination(page) {
 }
 
 function filterPlanets(planets) {
-  const filteredPlanets = planets.sort(function (a, b) {
+  const lessToMorePopulation = planets.sort(function (a, b) {
     if (a !== "unknown" && b !== "unknown") {
       return Number(b.population) - Number(a.population);
     }
   });
-  return filteredPlanets;
+  return lessToMorePopulation;
 }
 
 function createListItems(planets) {
   const filteredPlanets = filterPlanets(planets);
   ul.hasChildNodes ? (ul.innerHTML = null) : null;
-
   filteredPlanets.forEach((planet) => {
     const item = document.createElement("li");
-
     item.classList.add(
       "list__item",
       "flex",
       "justify-between",
       "cursor-pointer",
       "p-2",
-      "border-b-2"
+      "border-b-2",
+      "hover:text-cyan-500",
+      "transition-all",
+      "duration-300"
     );
-    item.addEventListener("click", () => addPlanetDetails(planet));
+    item.addEventListener("click", () => addPlanetDetails(planet, item));
 
     const name = document.createElement("span");
     const terrain = document.createElement("span");
     name.textContent = planet.name;
     terrain.textContent = planet.terrain;
     listLoader.classList.add("hidden");
+    item.value = planet.population;
     item.appendChild(name);
     item.appendChild(terrain);
     ul.appendChild(item);
+    item.classList.remove("text-cyan-500");
   });
 }
 
-function addPlanetDetails(planet) {
+function addPlanetDetails(planet, item) {
+  // remove selected item color
+  const listItemNode = [...ul.childNodes];
+  const convertToArr = Array.from(listItemNode);
+  convertToArr.map((item) => item.classList.remove("text-cyan-500"));
+
+  // add text color to the selected item
+  item.classList.add("text-cyan-500");
+
+  // add data to details panel
   infoTitle.classList.add("hidden");
   planetDetailsWrapper.classList.remove("hidden");
   nameEl.textContent = planet.name;
@@ -131,8 +144,48 @@ function addPlanetDetails(planet) {
 
 searchBar.addEventListener("input", (e) => {
   const keyword = e.target.value;
-  const filteredBySearch = ul.childNodes;
-  console.log(filteredBySearch);
+  const listItemNode = [...ul.childNodes];
+  const convertToArr = Array.from(listItemNode);
+
+  convertToArr.map((listItem) => {
+    const planetItemName = listItem.firstChild.textContent;
+
+    if (!planetItemName.includes(keyword)) {
+      listItem.classList.add("hidden");
+    } else {
+      listItem.classList.remove("hidden");
+    }
+  });
+});
+
+select.addEventListener("change", (e) => {
+  const selectChoice = e.target.value;
+  const listItemNode = [...ul.childNodes];
+  const convertToArr = Array.from(listItemNode);
+
+  convertToArr.forEach((listItem) => {
+    const planetPopulation = listItem.value;
+    switch (selectChoice) {
+      case "1":
+        planetPopulation >= 0 && planetPopulation <= 100000
+          ? listItem.classList.remove("hidden")
+          : listItem.classList.add("hidden");
+        break;
+      case "2":
+        planetPopulation >= 100000 && planetPopulation <= 100000000
+          ? listItem.classList.remove("hidden")
+          : listItem.classList.add("hidden");
+        break;
+      case "3":
+        planetPopulation > 100000000
+          ? listItem.classList.remove("hidden")
+          : listItem.classList.add("hidden");
+        break;
+      default:
+        listItem.classList.remove("hidden");
+        break;
+    }
+  });
 });
 
 document.addEventListener("DOMContentLoaded", init);
