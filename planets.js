@@ -21,12 +21,12 @@ async function init() {
   createListItems(planets);
 
   searchBar.addEventListener("input", (e) => {
-    const keyword = e.target.value;
+    const keyword = e.target.value.toLowerCase();
     const listItemNode = [...ul.childNodes];
     const convertToArr = Array.from(listItemNode);
 
     convertToArr.map((listItem) => {
-      const planetItemName = listItem.firstChild.textContent;
+      const planetItemName = listItem.firstChild.textContent.toLowerCase();
 
       if (!planetItemName.includes(keyword)) {
         listItem.classList.add("hidden");
