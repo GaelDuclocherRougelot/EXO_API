@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>About the univers</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="./assets/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="bg-zinc-900">
+    <header class="w-screen h-24 border-y-2 flex gap-10 items-center px-8 bg-zinc-900">
+      <img class="max-w-[300px] mb-6" src="./assets/logotype.png" alt="spaceX logo" />
+      <nav>
+        <ul class="flex items-center gap-8 text-white text-lg font-bold">
+          <li><a href="index.html" class="text-white">ACCUEIL</a></li>
+          <li>
+            <a class="text-cyan-500 transition-color duration-500" href="blog.html"
+              >BLOG</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="w-screen h-full flex flex-col gap-17 bg-zinc-900">
+      <aside
+        class="fixed flex flex-col gap-10 items-center py-10 px-2 w-40 h-screen top-24 left-0 bg-zinc-900 border-r-2 text-white font-bold"
+      >
+        <a href="planets.html" class="text-center flex flex-col gap-2 group">
+          <i class="fa-solid fa-globe fa-4x" style="color: #ffffff"></i>
+          <h2 class="group-hover:text-cyan-500 transition-color duration-500">
+            PLANÈTES
+          </h2>
+        </a>
+        <div class="text-center flex flex-col gap-4 group cursor-pointer">
+          <i
+            class="fa-solid fa-shuttle-space fa-rotate-270 fa-4x"
+            style="color: #ffffff"
+          ></i>
+          <h2 class="group-hover:text-cyan-500 transition-color duration-500">
+            VÉHICULES
+          </h2>
+        </div>
+        <div class="text-center flex flex-col gap-2 group cursor-pointer">
+          <i class="fa-brands fa-reddit-alien fa-4x" style="color: #ffffff"></i>
+          <h2 class="group-hover:text-cyan-500 transition-color duration-500">
+            PERSONNES
+          </h2>
+        </div>
+      </aside>
+      <section class="flex flex-col w-full h-full bg-zinc-900 p-10 pl-48">
+        <button id="open-create" href="add-post.html" class="p-4 bg-zinc-900 border-2 text-white w-fit"
+          >Créer un article</button
+        >
+
+        <form
+          id="create-form"
+          class="hidden border-2 flex flex-col gap-8 w-[500px] md:w-[500px] p-10 self-center"
+        >
+          <h1 class="text-white text-xl font-bold">Créer un article</h1>
+          <div class="flex flex-col gap-2">
+            <label for="title" class="text-white">Titre</label>
+            <input class="p-1" type="text" name="title" id="title" required/>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="image" class="text-white">Image (URL)</label>
+            <input class="p-1" type="text" name="image" id="image" required/>
+          </div>
+          <textarea
+            id="description"
+            class="resize-none p-1 h-32"
+            placeholder="Ajoutez une description..."
+            required
+          ></textarea>
+          <div class="flex justify-between">
+            <button id="quit-create-modal" href="blog.html" class="p-4 bg-zinc-900 border-2 text-white"> Annuler </>
+            <button class="p-4 bg-zinc-900 border-2 text-white" type="submit">
+              Créer l'article
+            </button>
+          </div>
+        </form>
+        <div id="articles" class="grid grid-cols-3 w-full h-full">
+          <!-- Articles created in JS -->
+        </div>
+      </section>
+    </main>
+    <script src="blog.js"></script>
+    <style>
+      html {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto", sans-serif;
+      }
+
+      .hero {
+        background-image: url("https://images.unsplash.com/photo-1610296669228-602fa827fc1f?auto=format&fit=crop&q=80&w=1975&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+      }
+
+      .hero2 {
+        background-image: url("https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&q=80&w=2050&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+      }
+    </style>
+  </body>
+</html>
